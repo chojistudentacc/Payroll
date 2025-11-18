@@ -26,17 +26,17 @@ namespace Payroll
                 return;
             }
 
-            repo = new Repository();
-            string userType = repo.AuthenticateUser(userName, password);
+            //repo = new Repository();
+            //string userType = repo.AuthenticateUser(userName, password);
 
-            if (userType == "employee")
+            if (userName == "employee")
             {
                 MessageBox.Show("Employee");
                 EmployeeForm empForm = new EmployeeForm();
                 empForm.Show();
                 this.Hide();
             }
-            else if (userType == "accountant")
+            else if (userName == "accountant")
             {
                 MessageBox.Show("Accountant");
                 AccountantForm accForm = new AccountantForm(userName);

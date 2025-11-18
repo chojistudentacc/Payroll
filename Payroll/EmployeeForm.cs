@@ -16,6 +16,41 @@ namespace Payroll
         public EmployeeForm()
         {
             InitializeComponent();
+            currentDateLabel.Text = DateTime.Now.ToString("MMMM dd, yyyy");
+        }
+
+        private void EmployeeForm_Load(object sender, EventArgs e)
+        {
+            timer1.Enabled = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void hideAllPanels()
+        {
+            payslipPanel.Visible = false;
+            dashboardPanel.Visible = false;
+        }
+
+        private void dashboardButton_Click(object sender, EventArgs e)
+        {
+            hideAllPanels();
+            dashboardPanel.Visible = true;
+        }
+
+        private void payslipButton_Click(object sender, EventArgs e)
+        {
+            hideAllPanels();
+            payslipPanel.Visible = true;
+        }
+
+        private void employeesButton_Click(object sender, EventArgs e)
+        {
+            hideAllPanels();
+            employeesPanel.Visible = true;
         }
     }
 }
