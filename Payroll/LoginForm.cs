@@ -18,7 +18,7 @@ namespace Payroll
 
         private void loginButt_Click(object sender, EventArgs e)
         {
-            // Left empty as per your original code (panel handles the login)
+            
         }
 
         private void LoginPanel_Click(object sender, EventArgs e)
@@ -45,7 +45,7 @@ namespace Payroll
             else if (userType == "accountant")
             {
                 MessageBox.Show("Accountant");
-                AccountantForm accForm = new AccountantForm(userName);  // Passing username to AccountantForm (adjust if needed)
+                AccountantForm accForm = new AccountantForm(userName); 
                 accForm.Show();
                 this.Hide();
             }
