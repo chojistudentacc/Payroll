@@ -6,8 +6,7 @@ namespace Payroll
 {
     public class Repository
     {
-        private readonly string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Choji Kodachi\\Source\\Repos\\Payroll1\\Payroll\\Database\\PayrollDatabase.mdf\";Integrated Security=True";
-
+        private readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Payroll.mdf;Integrated Security=True;";
         public string getAccountantID(string userName)
         {
             try
