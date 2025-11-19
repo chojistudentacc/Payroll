@@ -1,2 +1,2 @@
-# Can't upload local database
-sorry huhu, github won't allow it
+# Database functional na
+located sa main project "Payroll.mdf"
