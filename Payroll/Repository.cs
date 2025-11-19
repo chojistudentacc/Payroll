@@ -6,7 +6,7 @@ namespace Payroll
 {
     public class Repository
     {
-        private readonly string connectionString = "Data Source=DESKTOP-KOCUFNU\\SQLEXPRESS;Initial Catalog=Payroll;Integrated Security=True;Encrypt=False";
+        private readonly string connectionString = "Data Source=DESKTOP-KOCUFNU\\SQLEXPRESS;Initial Catalog=Payroll;Integrated Security=True;Encrypt=False;";
 
         public string getAccountantID(string userName)
         {
@@ -15,7 +15,7 @@ namespace Payroll
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string sql = "SELECT accountantID FROM accountantData WHERE userName=@userName;";
+                    string sql = "SELECT employeeID FROM accountantData WHERE userName=@userName;";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         command.Parameters.AddWithValue("@userName", userName);

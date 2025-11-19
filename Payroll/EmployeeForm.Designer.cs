@@ -88,9 +88,9 @@
             dashboardPanel.Controls.Add(panel4);
             dashboardPanel.Controls.Add(panel9);
             dashboardPanel.Controls.Add(panel8);
-            dashboardPanel.Location = new Point(143, 43);
+            dashboardPanel.Location = new Point(141, 43);
             dashboardPanel.Name = "dashboardPanel";
-            dashboardPanel.Size = new Size(660, 411);
+            dashboardPanel.Size = new Size(659, 410);
             dashboardPanel.TabIndex = 0;
             // 
             // panel6
@@ -289,10 +289,11 @@
             // 
             payslipPanel.BackColor = Color.FromArgb(17, 24, 34);
             payslipPanel.Controls.Add(label9);
-            payslipPanel.Location = new Point(143, 42);
+            payslipPanel.Location = new Point(141, 43);
             payslipPanel.Name = "payslipPanel";
-            payslipPanel.Size = new Size(657, 411);
+            payslipPanel.Size = new Size(659, 410);
             payslipPanel.TabIndex = 12;
+            payslipPanel.Visible = false;
             // 
             // label9
             // 
@@ -489,10 +490,11 @@
             // 
             employeesPanel.BackColor = Color.FromArgb(17, 24, 34);
             employeesPanel.Controls.Add(label10);
-            employeesPanel.Location = new Point(141, 41);
+            employeesPanel.Location = new Point(141, 43);
             employeesPanel.Name = "employeesPanel";
-            employeesPanel.Size = new Size(657, 411);
+            employeesPanel.Size = new Size(659, 410);
             employeesPanel.TabIndex = 13;
+            employeesPanel.Visible = false;
             // 
             // label10
             // 
@@ -511,8 +513,8 @@
             ClientSize = new Size(800, 450);
             ControlBox = false;
             Controls.Add(panel2);
-            Controls.Add(dashboardPanel);
             Controls.Add(panel3);
+            Controls.Add(dashboardPanel);
             Controls.Add(payslipPanel);
             Controls.Add(employeesPanel);
             FormBorderStyle = FormBorderStyle.None;
