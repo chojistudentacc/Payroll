@@ -1,6 +1,7 @@
 using System;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+using Microsoft.VisualBasic.Logging;
 
 namespace Payroll
 {
@@ -18,7 +19,7 @@ namespace Payroll
 
         private void loginButt_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void LoginPanel_Click(object sender, EventArgs e)
@@ -28,7 +29,7 @@ namespace Payroll
 
             if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("Please enter both username and password.");
+                MessageBox.Show("Please enter both username and password");
                 return;
             }
 
@@ -38,20 +39,33 @@ namespace Payroll
             if (userType == "employee")
             {
                 MessageBox.Show("Employee");
-                EmployeeForm empForm = new EmployeeForm();
+                usernameTB.Text = "";
+                passwordTB.Text = "";
+                EmployeeForm empForm = new EmployeeForm(this);
                 empForm.Show();
-                this.Hide();
+                this.Visible = false;
             }
             else if (userType == "accountant")
             {
                 MessageBox.Show("Accountant");
-                AccountantForm accForm = new AccountantForm(userName); 
+                usernameTB.Text = "";
+                passwordTB.Text = "";
+                AccountantForm accForm = new AccountantForm(userName, this);
                 accForm.Show();
-                this.Hide();
+                this.Visible = false;
+            }
+            else if (userType == "admin")
+            {
+                MessageBox.Show("Admin");
+                usernameTB.Text = "";
+                passwordTB.Text = "";
+                AdminForm adForm = new AdminForm(this);
+                adForm.Show();
+                this.Visible = false;
             }
             else
             {
-                MessageBox.Show("Invalid username or password.");
+                MessageBox.Show("Invalid username or password");
             }
         }
 
@@ -79,6 +93,11 @@ namespace Payroll
             path.CloseFigure();
 
             panel.Region = new Region(path);
+        }
+
+        private void exitButt_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

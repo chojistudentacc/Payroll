@@ -13,10 +13,13 @@ namespace Payroll
     public partial class EmployeeForm : Form
     {
 
-        public EmployeeForm()
+        LoginForm form;
+
+        public EmployeeForm(LoginForm form)
         {
             InitializeComponent();
             currentDateLabel.Text = DateTime.Now.ToString("MMMM dd, yyyy");
+            this.form = form;
         }
 
         private void EmployeeForm_Load(object sender, EventArgs e)
@@ -26,7 +29,8 @@ namespace Payroll
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
+            form.Show();
         }
 
         private void hideAllPanels()

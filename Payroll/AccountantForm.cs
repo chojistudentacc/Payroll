@@ -15,14 +15,16 @@ namespace Payroll
 
         private string userName;
         private string ID;
+        LoginForm login;
         Repository repo;
 
-        public AccountantForm(string name)
+        public AccountantForm(string name, LoginForm login)
         {
             InitializeComponent();
             this.userName = name;
             repo = new Repository();
             initializeItems();
+            this.login = login;
         }
 
         private void payslipButt_Click(object sender, EventArgs e)
@@ -50,6 +52,14 @@ namespace Payroll
             messagesPanel.Visible = false;
         }
 
-        
+        private void showLogin()
+        {
+            login.Visible = true;
+        }
+
+        private void AccountantForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            showLogin();
+        }
     }
 }

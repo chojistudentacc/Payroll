@@ -6,7 +6,10 @@ namespace Payroll
 {
     public class Repository
     {
-        private readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Payroll.mdf;Integrated Security=True;";
+
+        private readonly string connectionString =
+        @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Choji Kodachi\source\repos\Payroll\Payroll\Payroll.mdf"";Integrated Security=True";
+
         public string getAccountantID(string userName)
         {
             try
@@ -83,6 +86,30 @@ namespace Payroll
             }
         }
 
+        public bool AuthenticateAdmin(string userName, string password)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string sql = "SELECT COUNT(*) FROM adminData WHERE userName COLLATE SQL_Latin1_General_CP1_CS_AS = @userName AND password COLLATE SQL_Latin1_General_CP1_CS_AS = @password;";
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("@userName", userName);
+                        command.Parameters.AddWithValue("@password", password);
+                        int count = (int)command.ExecuteScalar();
+                        return count > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Connection Exception: " + ex.ToString());
+                return false;
+            }
+        }
+
         public string AuthenticateUser(string userName, string password)
         {
             if (AuthenticateEmployee(userName, password))
@@ -92,6 +119,10 @@ namespace Payroll
             if (AuthenticateAccountant(userName, password))
             {
                 return "accountant";
+            }
+            if (AuthenticateAdmin(userName, password))
+            {
+                return "admin";
             }
             return null;
         }

@@ -53,9 +53,9 @@
             // 
             payslipPanel.BackColor = SystemColors.ActiveCaption;
             payslipPanel.Controls.Add(payslipTitleLabel);
-            payslipPanel.Location = new Point(283, 81);
+            payslipPanel.Location = new Point(283, 12);
             payslipPanel.Name = "payslipPanel";
-            payslipPanel.Size = new Size(505, 357);
+            payslipPanel.Size = new Size(1094, 758);
             payslipPanel.TabIndex = 1;
             // 
             // payslipTitleLabel
@@ -92,9 +92,9 @@
             // 
             messagesPanel.BackColor = Color.RosyBrown;
             messagesPanel.Controls.Add(messagesTitleLabel);
-            messagesPanel.Location = new Point(283, 81);
+            messagesPanel.Location = new Point(283, 12);
             messagesPanel.Name = "messagesPanel";
-            messagesPanel.Size = new Size(505, 357);
+            messagesPanel.Size = new Size(1094, 758);
             messagesPanel.TabIndex = 2;
             // 
             // messagesTitleLabel
@@ -111,15 +111,16 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1389, 782);
+            Controls.Add(payslipPanel);
             Controls.Add(messagesPanel);
             Controls.Add(messagesButt);
             Controls.Add(payslipButt);
-            Controls.Add(payslipPanel);
             Controls.Add(idLabel);
             Name = "AccountantForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AccountantForm";
+            FormClosed += AccountantForm_FormClosed;
             payslipPanel.ResumeLayout(false);
             payslipPanel.PerformLayout();
             messagesPanel.ResumeLayout(false);

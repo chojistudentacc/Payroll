@@ -39,6 +39,7 @@
             loginButt = new Button();
             label5 = new Label();
             label6 = new Label();
+            exitButt = new Button();
             LoginPanel.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -94,7 +95,7 @@
             panel1.Controls.Add(label2);
             panel1.Controls.Add(usernameTB);
             panel1.Controls.Add(passwordTB);
-            panel1.Location = new Point(52, 98);
+            panel1.Location = new Point(334, 227);
             panel1.Margin = new Padding(44, 38, 44, 38);
             panel1.Name = "panel1";
             panel1.Size = new Size(750, 335);
@@ -127,7 +128,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Palatino Linotype", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(293, 8);
+            label2.Location = new Point(302, 0);
             label2.Name = "label2";
             label2.Size = new Size(156, 51);
             label2.TabIndex = 2;
@@ -135,7 +136,7 @@
             // 
             // loginButt
             // 
-            loginButt.Location = new Point(778, 445);
+            loginButt.Location = new Point(1328, 786);
             loginButt.Name = "loginButt";
             loginButt.Size = new Size(65, 23);
             loginButt.TabIndex = 2;
@@ -158,18 +159,29 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI Semibold", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.White;
-            label6.Location = new Point(291, 22);
+            label6.Location = new Point(597, 166);
             label6.Name = "label6";
             label6.Size = new Size(230, 45);
             label6.TabIndex = 7;
             label6.Text = "Payroll System";
+            // 
+            // exitButt
+            // 
+            exitButt.Location = new Point(12, 786);
+            exitButt.Name = "exitButt";
+            exitButt.Size = new Size(65, 23);
+            exitButt.TabIndex = 8;
+            exitButt.Text = "Exit";
+            exitButt.UseVisualStyleBackColor = true;
+            exitButt.Click += exitButt_Click;
             // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(17, 24, 34);
-            ClientSize = new Size(853, 478);
+            ClientSize = new Size(1405, 821);
+            Controls.Add(exitButt);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(loginButt);
@@ -187,9 +199,6 @@
         }
 
         #endregion
-
-        private TextBox usernameTB;
-        private TextBox passwordTB;
         private Panel LoginPanel;
         private Label label1;
         private Panel panel1;
@@ -199,5 +208,8 @@
         private Label label4;
         private Label label5;
         private Label label6;
+        private Button exitButt;
+        public TextBox usernameTB;
+        public TextBox passwordTB;
     }
 }

@@ -12,4 +12,10 @@
 		<PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Update="Payroll.mdf">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
 </Project>
