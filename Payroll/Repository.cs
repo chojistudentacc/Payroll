@@ -9,9 +9,7 @@ namespace Payroll
     public class Repository
     {
 
-        private readonly string connectionString =
-        @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Choji Kodachi\source\repos\Payroll\Payroll\Payroll.mdf"";Integrated Security=True";
-
+        private readonly string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\User\\source\\repos\\Payroll\\Payroll\\Payroll.mdf;Integrated Security=True";
         public string getAccountantID(string userName)
         {
             try
@@ -184,6 +182,30 @@ namespace Payroll
             }
         }
 
+        public string GetNextHRID()
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string sql = @"SELECT ISNULL(MAX(CAST(SUBSTRING(employeeID, 4, LEN(employeeID)) AS INT)), 0) FROM hrData WHERE employeeID LIKE 'HR-%';";
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        int maxNumber = (int)command.ExecuteScalar();
+                        int nextNumber = maxNumber + 1;
+                        return "HR-" + nextNumber;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Connection Exception: " + ex.ToString());
+                return null;
+            }
+        }
 
         public DataTable GetAllEmployee()
         {
@@ -245,6 +267,44 @@ namespace Payroll
                     middleName,
                     status
                     FROM accountantData;
+                    ";
+
+                    using (SqlCommand cmd = new SqlCommand(sql, connection))
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(table);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Connection Exception: " + ex.ToString());
+            }
+
+            return table;
+        }
+
+        public DataTable GetAllHR()
+        {
+            DataTable table = new DataTable();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string sql = @"
+                    SELECT 
+                    employeeID,
+                    email,
+                    contactNum,
+                    address,
+                    lastName,
+                    firstName,
+                    middleName,
+                    status
+                    FROM hrData;
                     ";
 
                     using (SqlCommand cmd = new SqlCommand(sql, connection))
@@ -421,6 +481,107 @@ namespace Payroll
             }
         }
 
+        public bool addHr(HumanResources hr)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
 
+                    string sql = @"INSERT INTO hrData (userName, password, employeeID, email, contactNum, address, lastName, firstName, middleName, status) VALUES (@userName, @password, @employeeID, @email, @contactNum, @address, @lastName, @firstName, @middleName, @status);";
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("@userName", hr.UserName);
+                        command.Parameters.AddWithValue("@password", hr.Password);
+                        command.Parameters.AddWithValue("@employeeID", GetNextHRID());
+                        command.Parameters.AddWithValue("@email", hr.Email);
+                        command.Parameters.AddWithValue("@contactNum", hr.ContactNum);
+                        command.Parameters.AddWithValue("@address", hr.Address);
+                        command.Parameters.AddWithValue("@lastName", hr.LastName);
+                        command.Parameters.AddWithValue("@firstName", hr.FirstName);
+                        command.Parameters.AddWithValue("@middleName", hr.MiddleName);
+                        command.Parameters.AddWithValue("@status", hr.Status);
+
+                        int rowsAffected = command.ExecuteNonQuery();
+                        return rowsAffected > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error adding HR: " + ex.ToString());
+                return false;
+            }
+        }
+
+        public int GetEmployeeCount()
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string sql = "SELECT COUNT(*) FROM employeeData;";
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        return (int)command.ExecuteScalar();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Connection Exception: " + ex.ToString());
+                return 0;
+            }
+        }
+
+        public int GetAccountantCount()
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string sql = "SELECT COUNT(*) FROM accountantData;";
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        return (int)command.ExecuteScalar();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Connection Exception: " + ex.ToString());
+                return 0;
+            }
+        }
+
+        public int GetHRCount()
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string sql = "SELECT COUNT(*) FROM hrData;";
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        return (int)command.ExecuteScalar();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Connection Exception: " + ex.ToString());
+                return 0;
+            }
+        }
+
+        public int GetTotalEmployeeCount()
+        {
+            return GetEmployeeCount() + GetAccountantCount() + GetHRCount();
+        }
     }
 }

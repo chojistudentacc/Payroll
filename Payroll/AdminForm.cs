@@ -32,6 +32,22 @@ namespace Payroll
             roleComboBox.Items.Add("Employee");
             roleComboBox.Items.Add("Human Resources");
             roleComboBox.Items.Add("Accountant");
+
+            positionComboBox.Items.Add("Employee");
+            positionComboBox.Items.Add("Accountant");
+            positionComboBox.Items.Add("Human Resources");
+
+            // labas total employees
+            allEmpLB.Text = repo.GetTotalEmployeeCount().ToString();
+
+            // para lumabas agad dashboard
+            hideallPanels();
+            dashPanel.Visible = true;
+        }
+
+        private void UpdateEmployeeCount()
+        {
+            allEmpLB.Text = repo.GetTotalEmployeeCount().ToString();
         }
 
         private void AdminForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -43,6 +59,7 @@ namespace Payroll
         {
             dashPanel.Visible = false;
             userPanel.Visible = false;
+            departmentPanel.Visible = false;
         }
 
         private void dashboardButt_Click(object sender, EventArgs e)
@@ -67,16 +84,17 @@ namespace Payroll
             {
                 userDataGridView.DataSource = repo.GetAllAccountant();
             }
-
+            else if (roleComboBox.Text.Equals("Human Resources"))
+            {
+                userDataGridView.DataSource = repo.GetAllHR();
+            }
         }
 
         private void addEmpButt_Click(object sender, EventArgs e)
         {
             userPanelDataGrid.Visible = false;
             userPanelAdd.Visible = true;
-            positionComboBox.Items.Add("Employee");
-            positionComboBox.Items.Add("Accountant");
-            positionComboBox.Items.Add("Human Resources");
+
         }
 
         private void roleComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -186,6 +204,7 @@ namespace Payroll
                     userPanelDataGrid.Visible = true;
                     userPanelAdd.Visible = false;
                     fillDataGridView();
+                    UpdateEmployeeCount();
                 }
                 else if (positionComboBox.Text.Equals("Accountant"))
                 {
@@ -205,6 +224,27 @@ namespace Payroll
                     userPanelDataGrid.Visible = true;
                     userPanelAdd.Visible = false;
                     fillDataGridView();
+                    UpdateEmployeeCount();
+                }
+                else if (positionComboBox.Text.Equals("Human Resources"))
+                {
+                    HumanResources hr = new HumanResources();
+                    hr.LastName = lastNameTB.Text;
+                    hr.FirstName = firstNameTB.Text;
+                    hr.MiddleName = middleNameTB.Text;
+                    hr.Address = addressTB.Text;
+                    hr.ContactNum = long.Parse(contactNoTB.Text);
+                    hr.Email = emailTB.Text;
+                    hr.UserName = userNameTB.Text;
+                    hr.Password = passTB.Text;
+                    hr.Status = activeRadioButt.Checked ? "Active" : "Inactive";
+                    repo.addHr(hr);
+
+                    clearCre();
+                    userPanelDataGrid.Visible = true;
+                    userPanelAdd.Visible = false;
+                    fillDataGridView();
+                    UpdateEmployeeCount();
                 }
             }
             else
@@ -219,6 +259,12 @@ namespace Payroll
             userPanelDataGrid.Visible = true;
             userPanelAdd.Visible = false;
             fillDataGridView();
+        }
+
+        private void departmentButt_Click(object sender, EventArgs e)
+        {
+            hideallPanels();
+            departmentPanel.Visible = true;
         }
     }
 }
