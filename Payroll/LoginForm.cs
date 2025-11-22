@@ -17,11 +17,6 @@ namespace Payroll
             RoundPanelCorners(LoginPanel, 20);
         }
 
-        private void loginButt_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void LoginPanel_Click(object sender, EventArgs e)
         {
             userName = usernameTB.Text.Trim();
