@@ -626,8 +626,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(17, 24, 34);
             ClientSize = new Size(1389, 782);
-            Controls.Add(sidePanel);
             Controls.Add(userPanel);
+            Controls.Add(sidePanel);
             Controls.Add(dashPanel);
             Name = "AdminForm";
             StartPosition = FormStartPosition.CenterScreen;
