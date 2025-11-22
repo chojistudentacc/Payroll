@@ -54,7 +54,7 @@ namespace Payroll
                 MessageBox.Show("Admin");
                 usernameTB.Text = "";
                 passwordTB.Text = "";
-                AdminForm adForm = new AdminForm(this);
+                AdminForm adForm = new AdminForm(this, userName);
                 adForm.Show();
                 this.Visible = false;
             }

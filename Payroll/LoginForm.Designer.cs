@@ -116,6 +116,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(17, 24, 34);
             BackgroundImage = Properties.Resources.LoginScreen;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1405, 821);
             Controls.Add(label4);
             Controls.Add(label3);
