@@ -265,6 +265,101 @@ namespace Payroll
         {
             hideallPanels();
             departmentPanel.Visible = true;
+            departmentDataGridPanel.Visible = true;
+            departmentAddPanel.Visible = false;
+            departmentEditPanel.Visible = false;
+            LoadDepartmentDataGridView();
+        }
+
+        private void LoadDepartmentDataGridView()
+        {
+            try
+            {
+                DataTable departments = repo.GetAllDepartments();
+                departmentDataGridView.DataSource = departments;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading departments: " + ex.ToString());
+            }
+        }
+
+        private void addDepartmentButton_Click(object sender, EventArgs e)
+        {
+            departmentDataGridPanel.Visible = false;
+            departmentAddPanel.Visible = true;
+            PopulateManagerComboBox();
+            ClearDepartmentForm();
+        }
+
+        private void PopulateManagerComboBox()
+        {
+            try
+            {
+                DataTable employees = repo.GetEmployeeNames();
+                cbManager.DataSource = employees;
+                cbManager.DisplayMember = "EmployeeName";
+                cbManager.ValueMember = "employeeID";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading managers: " + ex.ToString());
+            }
+        }
+
+        private void ClearDepartmentForm()
+        {
+            departmentNameTB.Text = "";
+            departmentDescription.Text = "";
+        }
+
+        private void saveDepartmentButton_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(departmentNameTB.Text) ||
+                cbManager.SelectedIndex == -1 ||
+                string.IsNullOrWhiteSpace(departmentDescription.Text))
+            {
+                MessageBox.Show("Please fill in all fields.");
+                return;
+            }
+
+            string departmentName = departmentNameTB.Text;
+            string assignedManager = cbManager.SelectedValue.ToString();
+            string managerName = cbManager.Text;
+            string description = departmentDescription.Text;
+
+            if (repo.AddDepartment(departmentName, assignedManager, managerName, description))
+            {
+                MessageBox.Show("Department added successfully!");
+                ClearDepartmentForm();
+                departmentAddPanel.Visible = false;
+                departmentDataGridPanel.Visible = true;
+                LoadDepartmentDataGridView();
+            }
+            else
+            {
+                MessageBox.Show("Failed to add department.");
+            }
+        }
+
+        private void cancelDepartmentButton_Click(object sender, EventArgs e)
+        {
+            ClearDepartmentForm();
+            departmentAddPanel.Visible = false;
+            departmentDataGridPanel.Visible = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            departmentEditPanel.Visible = false;
+            departmentDataGridPanel.Visible = true;
+            LoadDepartmentDataGridView();
+        }
+
+        private void editDepartmentButton_Click(object sender, EventArgs e)
+        {
+            departmentDataGridPanel.Visible = false;
+            departmentEditPanel.Visible = true;
         }
     }
 }

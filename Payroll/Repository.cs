@@ -583,5 +583,102 @@ namespace Payroll
         {
             return GetEmployeeCount() + GetAccountantCount() + GetHRCount();
         }
+
+        public DataTable GetEmployeeNames()
+        {
+            DataTable table = new DataTable();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string sql = @"
+                    SELECT 
+                    (firstName + ' ' + lastName) AS EmployeeName,
+                    employeeID
+                    FROM employeeData
+                    WHERE status = 'Active'
+                    ORDER BY firstName, lastName;
+                    ";
+
+                    using (SqlCommand cmd = new SqlCommand(sql, connection))
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(table);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Connection Exception: " + ex.ToString());
+            }
+
+            return table;
+        }
+
+        public bool AddDepartment(string departmentName, string assignedManager, string managerName, string description)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string sql = @"INSERT INTO departmentData (departmentName, assignedManager, managerName, description) VALUES (@departmentName, @assignedManager, @managerName, @description);";
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("@departmentName", departmentName);
+                        command.Parameters.AddWithValue("@assignedManager", assignedManager);
+                        command.Parameters.AddWithValue("@managerName", managerName);
+                        command.Parameters.AddWithValue("@description", description);
+
+                        int rowsAffected = command.ExecuteNonQuery();
+                        return rowsAffected > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error adding department: " + ex.ToString());
+                return false;
+            }
+        }
+
+        public DataTable GetAllDepartments()
+        {
+            DataTable table = new DataTable();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string sql = @"
+                    SELECT 
+                    departmentName AS Department,
+                    assignedManager AS ManagerID,
+                    managerName AS ManagerName,
+                    description
+                    FROM departmentData;
+                    ";
+
+                    using (SqlCommand cmd = new SqlCommand(sql, connection))
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(table);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Connection Exception: " + ex.ToString());
+            }
+
+            return table;
+        }
     }
 }

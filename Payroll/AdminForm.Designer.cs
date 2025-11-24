@@ -31,6 +31,7 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             sidePanel = new Panel();
             welcomeLabel = new Label();
             reportButt = new Button();
@@ -80,11 +81,35 @@
             userPanel1 = new Panel();
             userDataGridView = new DataGridView();
             departmentPanel = new Panel();
+            label4 = new Label();
+            departmentDataGridPanel = new Panel();
+            departmentDataGridView = new DataGridView();
+            panel3 = new Panel();
+            addDepartmentButton = new Button();
             deleteDepartmentButton = new Button();
             editDepartmentButton = new Button();
-            addDepartmentButton = new Button();
-            panel4 = new Panel();
-            panel3 = new Panel();
+            departmentEditPanel = new Panel();
+            button1 = new Button();
+            departmentEditDescription = new RichTextBox();
+            label9 = new Label();
+            departmentNameEditTB = new TextBox();
+            cbEditManager = new ComboBox();
+            label10 = new Label();
+            label11 = new Label();
+            cancelDepartmentEditButton = new Button();
+            label12 = new Label();
+            panel6 = new Panel();
+            departmentAddPanel = new Panel();
+            saveDepartmentButton = new Button();
+            departmentDescription = new RichTextBox();
+            label8 = new Label();
+            departmentNameTB = new TextBox();
+            cbManager = new ComboBox();
+            label7 = new Label();
+            label6 = new Label();
+            cancelDepartmentButton = new Button();
+            label5 = new Label();
+            panel5 = new Panel();
             sidePanel.SuspendLayout();
             dashPanel.SuspendLayout();
             panel1.SuspendLayout();
@@ -95,6 +120,10 @@
             userPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)userDataGridView).BeginInit();
             departmentPanel.SuspendLayout();
+            departmentDataGridPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)departmentDataGridView).BeginInit();
+            departmentEditPanel.SuspendLayout();
+            departmentAddPanel.SuspendLayout();
             SuspendLayout();
             // 
             // sidePanel
@@ -694,15 +723,82 @@
             // departmentPanel
             // 
             departmentPanel.BackColor = Color.FromArgb(224, 224, 224);
-            departmentPanel.Controls.Add(deleteDepartmentButton);
-            departmentPanel.Controls.Add(editDepartmentButton);
-            departmentPanel.Controls.Add(addDepartmentButton);
-            departmentPanel.Controls.Add(panel4);
-            departmentPanel.Controls.Add(panel3);
+            departmentPanel.Controls.Add(label4);
+            departmentPanel.Controls.Add(departmentAddPanel);
+            departmentPanel.Controls.Add(departmentDataGridPanel);
+            departmentPanel.Controls.Add(departmentEditPanel);
             departmentPanel.Location = new Point(273, 0);
             departmentPanel.Name = "departmentPanel";
             departmentPanel.Size = new Size(1116, 784);
             departmentPanel.TabIndex = 3;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(15, 9);
+            label4.Name = "label4";
+            label4.Size = new Size(98, 15);
+            label4.TabIndex = 31;
+            label4.Text = "departmentPanel";
+            // 
+            // departmentDataGridPanel
+            // 
+            departmentDataGridPanel.BackColor = Color.White;
+            departmentDataGridPanel.Controls.Add(departmentDataGridView);
+            departmentDataGridPanel.Controls.Add(panel3);
+            departmentDataGridPanel.Controls.Add(addDepartmentButton);
+            departmentDataGridPanel.Controls.Add(deleteDepartmentButton);
+            departmentDataGridPanel.Controls.Add(editDepartmentButton);
+            departmentDataGridPanel.Location = new Point(12, 38);
+            departmentDataGridPanel.Name = "departmentDataGridPanel";
+            departmentDataGridPanel.Size = new Size(1092, 721);
+            departmentDataGridPanel.TabIndex = 4;
+            // 
+            // departmentDataGridView
+            // 
+            departmentDataGridView.AllowUserToAddRows = false;
+            departmentDataGridView.AllowUserToDeleteRows = false;
+            departmentDataGridView.AllowUserToResizeColumns = false;
+            departmentDataGridView.AllowUserToResizeRows = false;
+            departmentDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            departmentDataGridView.BackgroundColor = Color.FromArgb(146, 45, 51);
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.Transparent;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            departmentDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            departmentDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            departmentDataGridView.Location = new Point(17, 101);
+            departmentDataGridView.Name = "departmentDataGridView";
+            departmentDataGridView.ReadOnly = true;
+            departmentDataGridView.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            departmentDataGridView.Size = new Size(1052, 486);
+            departmentDataGridView.TabIndex = 33;
+            // 
+            // panel3
+            // 
+            panel3.BackgroundImage = Properties.Resources.PanelBG;
+            panel3.Location = new Point(0, 0);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(1092, 67);
+            panel3.TabIndex = 31;
+            // 
+            // addDepartmentButton
+            // 
+            addDepartmentButton.BackColor = Color.FromArgb(146, 45, 51);
+            addDepartmentButton.FlatStyle = FlatStyle.Flat;
+            addDepartmentButton.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            addDepartmentButton.ForeColor = Color.White;
+            addDepartmentButton.Location = new Point(17, 628);
+            addDepartmentButton.Name = "addDepartmentButton";
+            addDepartmentButton.Size = new Size(261, 55);
+            addDepartmentButton.TabIndex = 28;
+            addDepartmentButton.Text = "ADD";
+            addDepartmentButton.UseVisualStyleBackColor = false;
+            addDepartmentButton.Click += addDepartmentButton_Click;
             // 
             // deleteDepartmentButton
             // 
@@ -710,7 +806,7 @@
             deleteDepartmentButton.FlatStyle = FlatStyle.Flat;
             deleteDepartmentButton.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             deleteDepartmentButton.ForeColor = Color.White;
-            deleteDepartmentButton.Location = new Point(783, 701);
+            deleteDepartmentButton.Location = new Point(808, 628);
             deleteDepartmentButton.Name = "deleteDepartmentButton";
             deleteDepartmentButton.Size = new Size(261, 55);
             deleteDepartmentButton.TabIndex = 30;
@@ -723,42 +819,252 @@
             editDepartmentButton.FlatStyle = FlatStyle.Flat;
             editDepartmentButton.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             editDepartmentButton.ForeColor = Color.White;
-            editDepartmentButton.Location = new Point(441, 698);
+            editDepartmentButton.Location = new Point(418, 628);
             editDepartmentButton.Name = "editDepartmentButton";
             editDepartmentButton.Size = new Size(261, 55);
             editDepartmentButton.TabIndex = 29;
             editDepartmentButton.Text = "EDIT";
             editDepartmentButton.UseVisualStyleBackColor = false;
+            editDepartmentButton.Click += editDepartmentButton_Click;
             // 
-            // addDepartmentButton
+            // departmentEditPanel
             // 
-            addDepartmentButton.BackColor = Color.FromArgb(146, 45, 51);
-            addDepartmentButton.FlatStyle = FlatStyle.Flat;
-            addDepartmentButton.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            addDepartmentButton.ForeColor = Color.White;
-            addDepartmentButton.Location = new Point(69, 698);
-            addDepartmentButton.Name = "addDepartmentButton";
-            addDepartmentButton.Size = new Size(261, 55);
-            addDepartmentButton.TabIndex = 28;
-            addDepartmentButton.Text = "ADD";
-            addDepartmentButton.UseVisualStyleBackColor = false;
+            departmentEditPanel.BackColor = Color.White;
+            departmentEditPanel.Controls.Add(button1);
+            departmentEditPanel.Controls.Add(departmentEditDescription);
+            departmentEditPanel.Controls.Add(label9);
+            departmentEditPanel.Controls.Add(departmentNameEditTB);
+            departmentEditPanel.Controls.Add(cbEditManager);
+            departmentEditPanel.Controls.Add(label10);
+            departmentEditPanel.Controls.Add(label11);
+            departmentEditPanel.Controls.Add(cancelDepartmentEditButton);
+            departmentEditPanel.Controls.Add(label12);
+            departmentEditPanel.Controls.Add(panel6);
+            departmentEditPanel.Location = new Point(12, 38);
+            departmentEditPanel.Name = "departmentEditPanel";
+            departmentEditPanel.Size = new Size(1092, 721);
+            departmentEditPanel.TabIndex = 33;
+            departmentEditPanel.Visible = false;
             // 
-            // panel4
+            // button1
             // 
-            panel4.BackgroundImage = Properties.Resources.PanelBG;
-            panel4.Location = new Point(12, 111);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(1086, 536);
-            panel4.TabIndex = 4;
+            button1.BackColor = Color.FromArgb(146, 45, 51);
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(57, 612);
+            button1.Name = "button1";
+            button1.Size = new Size(261, 55);
+            button1.TabIndex = 41;
+            button1.Text = "Save Changes";
+            button1.UseVisualStyleBackColor = false;
             // 
-            // panel3
+            // departmentEditDescription
             // 
-            panel3.BackgroundImage = Properties.Resources.PanelBG;
-            panel3.BackgroundImageLayout = ImageLayout.Stretch;
-            panel3.Location = new Point(12, 13);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(1092, 67);
-            panel3.TabIndex = 3;
+            departmentEditDescription.Location = new Point(128, 403);
+            departmentEditDescription.Name = "departmentEditDescription";
+            departmentEditDescription.Size = new Size(824, 132);
+            departmentEditDescription.TabIndex = 40;
+            departmentEditDescription.Text = "";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 14.25F);
+            label9.Location = new Point(128, 364);
+            label9.Name = "label9";
+            label9.Size = new Size(112, 25);
+            label9.TabIndex = 39;
+            label9.Text = "Description:";
+            // 
+            // departmentNameEditTB
+            // 
+            departmentNameEditTB.Font = new Font("Segoe UI", 14.25F);
+            departmentNameEditTB.Location = new Point(128, 254);
+            departmentNameEditTB.Name = "departmentNameEditTB";
+            departmentNameEditTB.Size = new Size(287, 33);
+            departmentNameEditTB.TabIndex = 38;
+            // 
+            // cbEditManager
+            // 
+            cbEditManager.Font = new Font("Segoe UI", 14.25F);
+            cbEditManager.FormattingEnabled = true;
+            cbEditManager.Location = new Point(712, 259);
+            cbEditManager.Name = "cbEditManager";
+            cbEditManager.Size = new Size(240, 33);
+            cbEditManager.TabIndex = 37;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 14.25F);
+            label10.Location = new Point(712, 218);
+            label10.Name = "label10";
+            label10.Size = new Size(152, 25);
+            label10.TabIndex = 36;
+            label10.Text = "Assign Manager:";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 14.25F);
+            label11.Location = new Point(128, 216);
+            label11.Name = "label11";
+            label11.Size = new Size(171, 25);
+            label11.TabIndex = 35;
+            label11.Text = "Department Name:";
+            // 
+            // cancelDepartmentEditButton
+            // 
+            cancelDepartmentEditButton.BackColor = Color.FromArgb(146, 45, 51);
+            cancelDepartmentEditButton.FlatStyle = FlatStyle.Flat;
+            cancelDepartmentEditButton.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cancelDepartmentEditButton.ForeColor = Color.White;
+            cancelDepartmentEditButton.Location = new Point(793, 612);
+            cancelDepartmentEditButton.Name = "cancelDepartmentEditButton";
+            cancelDepartmentEditButton.Size = new Size(261, 55);
+            cancelDepartmentEditButton.TabIndex = 34;
+            cancelDepartmentEditButton.Text = "Cancel";
+            cancelDepartmentEditButton.UseVisualStyleBackColor = false;
+            cancelDepartmentEditButton.Click += button2_Click;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI", 25F);
+            label12.Location = new Point(455, 93);
+            label12.Name = "label12";
+            label12.Size = new Size(267, 46);
+            label12.TabIndex = 33;
+            label12.Text = "Edit Department";
+            // 
+            // panel6
+            // 
+            panel6.BackgroundImage = Properties.Resources.PanelBG;
+            panel6.Location = new Point(0, 0);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(1092, 67);
+            panel6.TabIndex = 32;
+            // 
+            // departmentAddPanel
+            // 
+            departmentAddPanel.BackColor = Color.White;
+            departmentAddPanel.Controls.Add(saveDepartmentButton);
+            departmentAddPanel.Controls.Add(departmentDescription);
+            departmentAddPanel.Controls.Add(label8);
+            departmentAddPanel.Controls.Add(departmentNameTB);
+            departmentAddPanel.Controls.Add(cbManager);
+            departmentAddPanel.Controls.Add(label7);
+            departmentAddPanel.Controls.Add(label6);
+            departmentAddPanel.Controls.Add(cancelDepartmentButton);
+            departmentAddPanel.Controls.Add(label5);
+            departmentAddPanel.Controls.Add(panel5);
+            departmentAddPanel.Location = new Point(12, 38);
+            departmentAddPanel.Name = "departmentAddPanel";
+            departmentAddPanel.Size = new Size(1092, 721);
+            departmentAddPanel.TabIndex = 32;
+            departmentAddPanel.Visible = false;
+            // 
+            // saveDepartmentButton
+            // 
+            saveDepartmentButton.BackColor = Color.FromArgb(146, 45, 51);
+            saveDepartmentButton.FlatStyle = FlatStyle.Flat;
+            saveDepartmentButton.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            saveDepartmentButton.ForeColor = Color.White;
+            saveDepartmentButton.Location = new Point(57, 612);
+            saveDepartmentButton.Name = "saveDepartmentButton";
+            saveDepartmentButton.Size = new Size(261, 55);
+            saveDepartmentButton.TabIndex = 41;
+            saveDepartmentButton.Text = "Save";
+            saveDepartmentButton.UseVisualStyleBackColor = false;
+            saveDepartmentButton.Click += saveDepartmentButton_Click;
+            // 
+            // departmentDescription
+            // 
+            departmentDescription.Location = new Point(128, 403);
+            departmentDescription.Name = "departmentDescription";
+            departmentDescription.Size = new Size(824, 132);
+            departmentDescription.TabIndex = 40;
+            departmentDescription.Text = "";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 14.25F);
+            label8.Location = new Point(128, 364);
+            label8.Name = "label8";
+            label8.Size = new Size(112, 25);
+            label8.TabIndex = 39;
+            label8.Text = "Description:";
+            // 
+            // departmentNameTB
+            // 
+            departmentNameTB.Font = new Font("Segoe UI", 14.25F);
+            departmentNameTB.Location = new Point(128, 254);
+            departmentNameTB.Name = "departmentNameTB";
+            departmentNameTB.Size = new Size(287, 33);
+            departmentNameTB.TabIndex = 38;
+            // 
+            // cbManager
+            // 
+            cbManager.Font = new Font("Segoe UI", 14.25F);
+            cbManager.FormattingEnabled = true;
+            cbManager.Location = new Point(712, 259);
+            cbManager.Name = "cbManager";
+            cbManager.Size = new Size(240, 33);
+            cbManager.TabIndex = 37;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 14.25F);
+            label7.Location = new Point(712, 218);
+            label7.Name = "label7";
+            label7.Size = new Size(152, 25);
+            label7.TabIndex = 36;
+            label7.Text = "Assign Manager:";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 14.25F);
+            label6.Location = new Point(128, 216);
+            label6.Name = "label6";
+            label6.Size = new Size(171, 25);
+            label6.TabIndex = 35;
+            label6.Text = "Department Name:";
+            // 
+            // cancelDepartmentButton
+            // 
+            cancelDepartmentButton.BackColor = Color.FromArgb(146, 45, 51);
+            cancelDepartmentButton.FlatStyle = FlatStyle.Flat;
+            cancelDepartmentButton.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cancelDepartmentButton.ForeColor = Color.White;
+            cancelDepartmentButton.Location = new Point(793, 612);
+            cancelDepartmentButton.Name = "cancelDepartmentButton";
+            cancelDepartmentButton.Size = new Size(261, 55);
+            cancelDepartmentButton.TabIndex = 34;
+            cancelDepartmentButton.Text = "Cancel";
+            cancelDepartmentButton.UseVisualStyleBackColor = false;
+            cancelDepartmentButton.Click += cancelDepartmentButton_Click;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 25F);
+            label5.Location = new Point(455, 93);
+            label5.Name = "label5";
+            label5.Size = new Size(272, 46);
+            label5.TabIndex = 33;
+            label5.Text = "Add Department";
+            // 
+            // panel5
+            // 
+            panel5.BackgroundImage = Properties.Resources.PanelBG;
+            panel5.Location = new Point(0, 0);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(1092, 67);
+            panel5.TabIndex = 32;
             // 
             // AdminForm
             // 
@@ -789,6 +1095,13 @@
             userPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)userDataGridView).EndInit();
             departmentPanel.ResumeLayout(false);
+            departmentPanel.PerformLayout();
+            departmentDataGridPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)departmentDataGridView).EndInit();
+            departmentEditPanel.ResumeLayout(false);
+            departmentEditPanel.PerformLayout();
+            departmentAddPanel.ResumeLayout(false);
+            departmentAddPanel.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -847,7 +1160,31 @@
         private Button deleteDepartmentButton;
         private Button editDepartmentButton;
         private Button addDepartmentButton;
-        private Panel panel4;
+        private Panel departmentDataGridPanel;
+        private Label label4;
         private Panel panel3;
+        private DataGridView departmentDataGridView;
+        private Panel departmentAddPanel;
+        private Label label5;
+        private Panel panel5;
+        private Button cancelDepartmentButton;
+        private Label label6;
+        private Button saveDepartmentButton;
+        private RichTextBox departmentDescription;
+        private Label label8;
+        private TextBox departmentNameTB;
+        private ComboBox cbManager;
+        private Label label7;
+        private Panel departmentEditPanel;
+        private Button button1;
+        private RichTextBox departmentEditDescription;
+        private Label label9;
+        private TextBox departmentNameEditTB;
+        private ComboBox cbEditManager;
+        private Label label10;
+        private Label label11;
+        private Button cancelDepartmentEditButton;
+        private Label label12;
+        private Panel panel6;
     }
 }
